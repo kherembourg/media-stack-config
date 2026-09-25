@@ -1,0 +1,34 @@
+<?xml version='1.0' encoding='utf-8'?>
+<ServerConfiguration>
+  <LogFileRetentionDays>3</LogFileRetentionDays>
+  <EnableMetrics>false</EnableMetrics>
+  <QuickConnectAvailable>true</QuickConnectAvailable>
+  <PreferredMetadataLanguage>fr</PreferredMetadataLanguage>
+  <MetadataCountryCode>FR</MetadataCountryCode>
+  <MinResumePct>5</MinResumePct>
+  <MaxResumePct>90</MaxResumePct>
+  <MinResumeDurationSeconds>300</MinResumeDurationSeconds>
+  <MinAudiobookResume>5</MinAudiobookResume>
+  <MaxAudiobookResume>5</MaxAudiobookResume>
+  <InactiveSessionThreshold>0</InactiveSessionThreshold>
+  <LibraryMonitorDelay>60</LibraryMonitorDelay>
+  <LibraryUpdateDuration>30</LibraryUpdateDuration>
+  <CacheSize>800</CacheSize>
+  <ImageSavingConvention>Legacy</ImageSavingConvention>
+  <UICulture>fr</UICulture>
+  <SaveMetadataHidden>false</SaveMetadataHidden>
+  <RemoteClientBitrateLimit>0</RemoteClientBitrateLimit>
+  <EnableFolderView>false</EnableFolderView>
+  <EnableGroupingMoviesIntoCollections>false</EnableGroupingMoviesIntoCollections>
+  <EnableGroupingShowsIntoCollections>false</EnableGroupingShowsIntoCollections>
+  <DisplaySpecialsWithinSeasons>true</DisplaySpecialsWithinSeasons>
+  <EnableExternalContentInSuggestions>true</EnableExternalContentInSuggestions>
+  <ImageExtractionTimeoutMs>0</ImageExtractionTimeoutMs>
+  <ActivityLogRetentionDays>30</ActivityLogRetentionDays>
+  <LibraryScanFanoutConcurrency>0</LibraryScanFanoutConcurrency>
+  <LibraryMetadataRefreshConcurrency>0</LibraryMetadataRefreshConcurrency>
+  <AllowClientLogUpload>true</AllowClientLogUpload>
+  <DummyChapterDuration>0</DummyChapterDuration>
+  <ChapterImageResolution>MatchSource</ChapterImageResolution>
+  <ParallelImageEncodingLimit>0</ParallelImageEncodingLimit>
+</ServerConfiguration>

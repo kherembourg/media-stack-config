@@ -1,0 +1,18 @@
+title: Centre multimédia
+description: Services sur le Mac · médias sur le Synology
+language: fr
+theme: dark
+color: slate
+statusStyle: dot
+target: _self
+useEqualHeights: true
+layout:
+  Médiathèque:
+    style: row
+    columns: 3
+  Téléchargements:
+    style: row
+    columns: 2
+  Demandes:
+    style: row
+    columns: 1

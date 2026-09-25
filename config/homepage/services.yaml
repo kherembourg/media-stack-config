@@ -1,0 +1,62 @@
+- Médiathèque:
+    - Sonarr:
+        icon: sonarr.png
+        href: http://127.0.0.1:8989
+        description: Séries
+        siteMonitor: http://sonarr:8989/ping
+        widget:
+          type: sonarr
+          url: http://sonarr:8989
+          key: "{{HOMEPAGE_FILE_SONARR_KEY}}"
+    - Radarr:
+        icon: radarr.png
+        href: http://127.0.0.1:7878
+        description: Films
+        siteMonitor: http://radarr:7878/ping
+        widget:
+          type: radarr
+          url: http://radarr:7878
+          key: "{{HOMEPAGE_FILE_RADARR_KEY}}"
+    - Jellyfin:
+        icon: jellyfin.png
+        href: http://127.0.0.1:8096
+        description: Lecture vidéo en secours de Plex
+        siteMonitor: http://host.docker.internal:8096/
+    - Bazarr:
+        icon: bazarr.png
+        href: http://127.0.0.1:6767
+        description: Sous-titres
+        siteMonitor: http://bazarr:6767/
+        widget:
+          type: bazarr
+          url: http://bazarr:6767
+          key: "{{HOMEPAGE_FILE_BAZARR_KEY}}"
+- Téléchargements:
+    - Prowlarr:
+        icon: prowlarr.png
+        href: http://127.0.0.1:9696
+        description: Indexeurs
+        siteMonitor: http://prowlarr:9696/ping
+        widget:
+          type: prowlarr
+          url: http://prowlarr:9696
+          key: "{{HOMEPAGE_FILE_PROWLARR_KEY}}"
+    - NZBGet:
+        icon: nzbget.png
+        href: http://127.0.0.1:6789
+        description: Téléchargements Usenet
+        widget:
+          type: nzbget
+          url: http://nzbget:6789
+          username: "{{HOMEPAGE_FILE_NZBGET_USER}}"
+          password: "{{HOMEPAGE_FILE_NZBGET_PASS}}"
+- Demandes:
+    - Seerr:
+        icon: seerr.png
+        href: http://127.0.0.1:5055
+        description: Demandes de films et séries
+        siteMonitor: http://seerr:5055/
+        widget:
+          type: seerr
+          url: http://seerr:5055
+          key: "{{HOMEPAGE_FILE_SEERR_KEY}}"

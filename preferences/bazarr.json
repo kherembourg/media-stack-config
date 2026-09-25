@@ -1,0 +1,133 @@
+{
+  "general": {
+    "adaptive_searching": false,
+    "adaptive_searching_delay": "3w",
+    "adaptive_searching_delta": "1w",
+    "chmod": "0640",
+    "chmod_enabled": false,
+    "concurrent_jobs": 4,
+    "days_to_upgrade_subs": 30,
+    "default_und_audio_lang": "",
+    "default_und_embedded_subtitles_lang": "",
+    "embedded_subs_show_desired": true,
+    "embedded_subtitles_parser": "ffprobe",
+    "enable_strm_support": false,
+    "enabled_integrations": [],
+    "hi_extension": "hi",
+    "ignore_ass_subs": false,
+    "ignore_pgs_subs": false,
+    "ignore_vobsub_subs": false,
+    "language_equals": [],
+    "minimum_score": 90,
+    "minimum_score_movie": 70,
+    "movie_default_enabled": true,
+    "multithreading": true,
+    "parse_embedded_audio_track": false,
+    "serie_default_enabled": true,
+    "single_language": false,
+    "skip_hashing": false,
+    "subfolder": "current",
+    "subzero_mods": "",
+    "theme": "auto",
+    "upgrade_frequency": 12,
+    "upgrade_manual": true,
+    "upgrade_subs": true,
+    "use_embedded_subs": true,
+    "use_jellyfin": false,
+    "use_plex": true,
+    "use_radarr": true,
+    "use_scenename": true,
+    "use_sonarr": true,
+    "utf8_encode": true,
+    "wanted_search_frequency": 6,
+    "wanted_search_frequency_movie": 6
+  },
+  "connections": {
+    "sonarr": {
+      "base_url": "",
+      "ip": "sonarr",
+      "port": 8989,
+      "ssl": false,
+      "only_monitored": false,
+      "sync_only_monitored_episodes": false,
+      "sync_only_monitored_series": false,
+      "exclude_season_zero": false,
+      "excluded_series_types": [],
+      "use_ffprobe_cache": true
+    },
+    "radarr": {
+      "base_url": "",
+      "ip": "radarr",
+      "port": 7878,
+      "ssl": false,
+      "only_monitored": false,
+      "sync_only_monitored_movies": false,
+      "use_ffprobe_cache": true
+    }
+  },
+  "embeddedSubtitles": {
+    "fallback_lang": "en",
+    "hi_fallback": false,
+    "included_codecs": [],
+    "timeout": 600,
+    "unknown_as_fallback": false
+  },
+  "synchronization": {
+    "auto_use_original_language": false,
+    "checker": {
+      "blacklisted_languages": [],
+      "blacklisted_providers": []
+    },
+    "debug": false,
+    "force_audio": false,
+    "gss": true,
+    "max_offset_seconds": 60,
+    "no_fix_framerate": true,
+    "subsync_movie_threshold": 70,
+    "subsync_threshold": 90,
+    "use_original_language": false,
+    "use_subsync": false,
+    "use_subsync_movie_threshold": false,
+    "use_subsync_threshold": false
+  },
+  "languageProfiles": [
+    {
+      "name": "Basic",
+      "cutoff": null,
+      "items": [
+        {
+          "id": 2,
+          "language": "fr",
+          "audio_exclude": "False",
+          "hi": "False",
+          "forced": "False",
+          "audio_only_include": "False"
+        }
+      ],
+      "mustContain": [],
+      "mustNotContain": [],
+      "originalFormat": 0
+    },
+    {
+      "name": "English",
+      "cutoff": 1,
+      "items": [
+        {
+          "id": 1,
+          "language": "en",
+          "audio_exclude": "False",
+          "hi": "False",
+          "forced": "False",
+          "audio_only_include": "False"
+        }
+      ],
+      "mustContain": [],
+      "mustNotContain": [],
+      "originalFormat": 0
+    }
+  ],
+  "defaultLanguageProfiles": {
+    "series": "Basic",
+    "movies": "Basic"
+  }
+}

@@ -1,0 +1,17 @@
+name: Validate public configuration
+on: [push, pull_request]
+permissions:
+  contents: read
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Check public files and credential patterns
+        run: python3 scripts/check_public.py
+      - name: Test mount safety without network access
+        run: python3 scripts/test_mount_shares.py
+      - name: Validate Compose template
+        run: docker compose --env-file .env.example config --quiet

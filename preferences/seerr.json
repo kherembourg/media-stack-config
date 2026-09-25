@@ -1,0 +1,69 @@
+{
+  "main": {
+    "applicationTitle": "Seerr",
+    "cacheImages": true,
+    "defaultPermissions": 9437344,
+    "defaultQuotas": {
+      "movie": {
+        "quotaLimit": 0,
+        "quotaDays": 7
+      },
+      "tv": {
+        "quotaLimit": 0,
+        "quotaDays": 7
+      }
+    },
+    "hideAvailable": false,
+    "hideBlocklisted": false,
+    "localLogin": true,
+    "mediaServerLogin": true,
+    "newPlexLogin": true,
+    "discoverRegion": "",
+    "streamingRegion": "US",
+    "originalLanguage": "",
+    "mediaServerType": 1,
+    "partialRequestsEnabled": true,
+    "enableSpecialEpisodes": false,
+    "locale": "fr",
+    "versionCheck": true
+  },
+  "services": {
+    "sonarr": [
+      {
+        "hostname": "sonarr",
+        "port": 8989,
+        "useSsl": false,
+        "activeProfileName": "HD-1080p",
+        "activeDirectory": "/series",
+        "activeAnimeProfileName": "HD-1080p",
+        "activeAnimeDirectory": "/series",
+        "is4k": false,
+        "isDefault": true,
+        "enableSeasonFolders": false,
+        "syncEnabled": true,
+        "preventSearch": false,
+        "tagRequests": false
+      }
+    ],
+    "radarr": [
+      {
+        "hostname": "radarr",
+        "port": 7878,
+        "useSsl": false,
+        "baseUrl": "",
+        "activeProfileName": "HD-1080p",
+        "activeDirectory": "/movies",
+        "is4k": false,
+        "isDefault": true,
+        "minimumAvailability": "released",
+        "syncEnabled": true,
+        "preventSearch": false,
+        "tagRequests": false
+      }
+    ]
+  },
+  "mediaServer": {
+    "host": "host.docker.internal or your NAS hostname",
+    "note": "Reconfigure the media-server integration privately; server/account identifiers, tokens, and library IDs are excluded."
+  }
+}

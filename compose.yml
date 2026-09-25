@@ -1,0 +1,101 @@
+# Public template: credentials and runtime data are deliberately excluded.
+name: media-stack
+
+x-lsio-env: &lsio-env
+  PUID: "${PUID:-501}"
+  PGID: "${PGID:-20}"
+  TZ: ${TZ:-Europe/Paris}
+
+x-mount-downloads: &mount-downloads
+  type: bind
+  source: ${MEDIA_ROOT:?Set MEDIA_ROOT in .env}/Downloads
+  target: /downloads
+  bind:
+    create_host_path: false
+
+x-mount-movies: &mount-movies
+  type: bind
+  source: ${MEDIA_ROOT:?Set MEDIA_ROOT in .env}/Films
+  target: /movies
+  bind:
+    create_host_path: false
+
+x-mount-series: &mount-series
+  type: bind
+  source: ${MEDIA_ROOT:?Set MEDIA_ROOT in .env}/Series
+  target: /series
+  bind:
+    create_host_path: false
+
+services:
+  sonarr:
+    image: lscr.io/linuxserver/sonarr:latest
+    ports: ["127.0.0.1:8989:8989"]
+    environment: *lsio-env
+    volumes:
+      - ./runtime/sonarr:/config
+      - *mount-downloads
+      - *mount-series
+
+  radarr:
+    image: lscr.io/linuxserver/radarr:latest
+    ports: ["127.0.0.1:7878:7878"]
+    environment: *lsio-env
+    volumes:
+      - ./runtime/radarr:/config
+      - *mount-downloads
+      - *mount-movies
+
+  prowlarr:
+    image: lscr.io/linuxserver/prowlarr:latest
+    ports: ["127.0.0.1:9696:9696"]
+    environment: *lsio-env
+    volumes:
+      - ./runtime/prowlarr:/config
+      - *mount-downloads
+      - *mount-movies
+      - *mount-series
+
+  nzbget:
+    image: lscr.io/linuxserver/nzbget:latest
+    ports: ["127.0.0.1:6789:6789"]
+    environment: *lsio-env
+    volumes:
+      - ./runtime/nzbget:/config
+      - *mount-downloads
+
+  bazarr:
+    image: lscr.io/linuxserver/bazarr:latest
+    ports: ["127.0.0.1:6767:6767"]
+    environment: *lsio-env
+    volumes:
+      - ./runtime/bazarr:/config
+      - *mount-series
+      - *mount-movies
+
+  seerr:
+    image: seerr/seerr:latest
+    ports: ["127.0.0.1:5055:5055"]
+    environment:
+      TZ: ${TZ:-Europe/Paris}
+    volumes:
+      - ./runtime/overseer:/app/config
+
+  homepage:
+    image: ghcr.io/gethomepage/homepage:latest
+    ports: ["127.0.0.1:3000:3000"]
+    environment:
+      PUID: "${PUID:-501}"
+      PGID: "${PGID:-20}"
+      TZ: ${TZ:-Europe/Paris}
+      HOMEPAGE_ALLOWED_HOSTS: "localhost:3000,127.0.0.1:3000"
+      HOMEPAGE_FILE_SONARR_KEY: /run/secrets/homepage/sonarr_key
+      HOMEPAGE_FILE_RADARR_KEY: /run/secrets/homepage/radarr_key
+      HOMEPAGE_FILE_PROWLARR_KEY: /run/secrets/homepage/prowlarr_key
+      HOMEPAGE_FILE_BAZARR_KEY: /run/secrets/homepage/bazarr_key
+      HOMEPAGE_FILE_SEERR_KEY: /run/secrets/homepage/seerr_key
+      HOMEPAGE_FILE_NZBGET_USER: /run/secrets/homepage/nzbget_user
+      HOMEPAGE_FILE_NZBGET_PASS: /run/secrets/homepage/nzbget_pass
+    volumes:
+      - ./config/homepage:/app/config
+      - ./secrets/homepage:/run/secrets/homepage:ro
