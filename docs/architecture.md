@@ -32,7 +32,7 @@ flowchart TB
         Engine --> Mounts
         Native --> Mounts
         Keychain --> Mounts
-        Homepage -. host.docker.internal .-> Native
+        Homepage -.->|"host.docker.internal"| Native
     end
     Mounts <-- SMB --> NAS[(NAS shares: Downloads / Films / Series)]
 ```

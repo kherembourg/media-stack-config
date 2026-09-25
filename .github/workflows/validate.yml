@@ -15,3 +15,12 @@ jobs:
         run: python3 scripts/test_mount_shares.py
       - name: Validate Compose template
         run: docker compose --env-file .env.example config --quiet
+      - name: Render Mermaid diagrams
+        timeout-minutes: 5
+        env:
+          PUPPETEER_SKIP_DOWNLOAD: "true"
+        run: |
+          printf '%s\n' '{"executablePath":"/usr/bin/google-chrome","args":["--no-sandbox"]}' > "$RUNNER_TEMP/mermaid-browser.json"
+          for doc in README.md docs/architecture.md; do
+            npm exec --yes --package=@mermaid-js/mermaid-cli@12.0.0 -- mmdc -p "$RUNNER_TEMP/mermaid-browser.json" -i "$doc" -o "$RUNNER_TEMP/$(basename "$doc")"
+          done
